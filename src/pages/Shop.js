@@ -1,7 +1,12 @@
+import Products from "../components/product/Products";
 const Shop = () => {
-    return <h1 className="text-3xl font-bold underline">
-        Shop Page
-    </h1>
+  return (
+    <>
+    
+      <Products></Products>
+    </>
+  ); 
+    
   };
   export default Shop;
   
