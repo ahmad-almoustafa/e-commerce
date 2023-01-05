@@ -1,4 +1,11 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../../features/cart/cartSlice";
+
 const ProductList = ({ product }) => {
+  //dispatch actions to the Redux reducers
+  const dispatch = useDispatch();
+//   console.log('product:', product);
+  
   return (
     <>
       {product.loading && <div>Loading...</div>}
@@ -18,14 +25,13 @@ const ProductList = ({ product }) => {
                 </div>
 
                 <div className="mt-4 flex justify-between">
-                  <h3 className="text-sm text-gray-700">       
-                      <span aria-hidden="true" className=" font-semibold absolute inset-0 " />
+                  <h3 className="text-sm text-gray-700 font-semibold ">       
                       {product.title}
                   </h3>
                   <p className="text-sm font-medium text-gray-900">
                     ${product.price}
                   </p>
-                </div>
+                </div> 
 
                 <div>
                   <small
@@ -38,7 +44,7 @@ const ProductList = ({ product }) => {
 
                 <div className="flex flex-wrap mt-auto space-x-2 justify-center">
                   <button
-                    type="button"
+                    onClick={() => dispatch(addItem(product))}
                     className="inline-block mt-4 px-12 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out"
                   >
                     Add to Cart
