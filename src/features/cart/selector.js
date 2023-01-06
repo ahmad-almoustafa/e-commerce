@@ -30,3 +30,10 @@ export const selectCartCount = createSelector([selectCartItemsSlice], (cartItems
     0
   )
 );
+
+//memoized 
+export const selectIsCartOpen = createSelector(
+  [selectCartReducer], 
+  (cart) =>cart.isCartOpen
+);
+

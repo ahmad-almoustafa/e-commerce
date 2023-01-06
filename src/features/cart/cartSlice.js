@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
  */
 const initialState = {
   cartItems: {},
+  isCartOpen: false,
 };
 
 
@@ -32,9 +33,12 @@ const cartSlice = createSlice({
         };
       }
     },
+    setIsCartOpen(state, action) {
+      state.isCartOpen=action.payload
+    }
   },
 });
 
 // export const cartReducer = cartSlice.reducer;
 export default  cartSlice.reducer; // you can import => import nameXYZ from cartSlice
-export const { addItem } = cartSlice.actions;
+export const { addItem , setIsCartOpen} = cartSlice.actions;
