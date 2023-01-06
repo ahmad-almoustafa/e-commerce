@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 /**
  * createSlice => the standard approach for writing Redux logic.
  */
 const initialState = {
-  cartItems: {},
+  cartItems: {},// {id :{product: product,qty: 1},
   isCartOpen: false,
 };
 
@@ -21,9 +21,8 @@ const cartSlice = createSlice({
      * with slice reducer => you can directly mutate the state =>createSlice use 'immer' library under the hood
      */
     addItem(state, action) {
-     
       const product=action.payload;
-      console.log(' addItem product:', product);
+      // console.log(' addItem product:', product);
       if (product.id in state.cartItems) {
         state.cartItems[product.id].qty++;
       }else{
@@ -33,6 +32,12 @@ const cartSlice = createSlice({
         };
       }
     },
+    removeItem(state, action) {
+      const productID=action.payload;
+     // console.log(current(state))//use current() to log the state instead or the proxy obj
+      delete state.cartItems[productID]
+    },
+    
     setIsCartOpen(state, action) {
       state.isCartOpen=action.payload
     }
@@ -41,4 +46,4 @@ const cartSlice = createSlice({
 
 // export const cartReducer = cartSlice.reducer;
 export default  cartSlice.reducer; // you can import => import nameXYZ from cartSlice
-export const { addItem , setIsCartOpen} = cartSlice.actions;
+export const { addItem,removeItem, setIsCartOpen} = cartSlice.actions;

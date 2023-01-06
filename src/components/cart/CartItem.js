@@ -1,4 +1,10 @@
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { removeItem } from "../../features/cart/cartSlice";
+
 const CartItem = ({ item }) => {
+  const dispatch=useDispatch();
+  
   return (
     <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
       <div className="flex w-2/5">
@@ -13,13 +19,13 @@ const CartItem = ({ item }) => {
         </div>
         <div className="flex flex-col justify-between ml-4 flex-grow">
           <span className="font-bold text-sm">{item.product.title}</span>
-          <span className="text-red-500 text-xs">{item.product.brand}</span>
-          <a
-            href="#"
-            className="font-semibold hover:text-red-500 text-gray-500 text-xs"
+          <span className="text-indigo-500 text-xs">{item.product.brand}</span>
+          <Link
+            onClick={()=>{dispatch(removeItem(item.product.id))}}
+            className="font-semibold text-red-500 hover:text-rose-900 text-xs"
           >
             Remove
-          </a>
+          </Link>
         </div>
       </div>
       <div className="flex justify-center w-1/5">
