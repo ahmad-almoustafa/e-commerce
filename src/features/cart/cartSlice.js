@@ -37,6 +37,10 @@ const cartSlice = createSlice({
      // console.log(current(state))//use current() to log the state instead or the proxy obj
       delete state.cartItems[productID]
     },
+    setItemQty(state,action){
+      console.log(' setItemQty:', action.payload);
+       state.cartItems[action.payload.productID].qty=action.payload.qty 
+    },
     
     setIsCartOpen(state, action) {
       state.isCartOpen=action.payload
@@ -46,4 +50,4 @@ const cartSlice = createSlice({
 
 // export const cartReducer = cartSlice.reducer;
 export default  cartSlice.reducer; // you can import => import nameXYZ from cartSlice
-export const { addItem,removeItem, setIsCartOpen} = cartSlice.actions;
+export const { addItem,removeItem,setItemQty, setIsCartOpen} = cartSlice.actions;
