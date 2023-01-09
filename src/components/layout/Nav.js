@@ -31,9 +31,9 @@ import CartIcon from "../cart/CartIcon";
               </ul>
               {/* Header Icons */}
               <div className="hidden xl:flex items-center space-x-5 items-center">
-                <Link className="flex items-center hover:text-gray-200" to="/checkout">
-                   <CartIcon> </CartIcon>
-                </Link>
+              
+                <CartIcon> </CartIcon>
+      
                 {/* Sign In / Register      */}
                 <Link className="flex items-center hover:text-gray-200" to="#">
                   <svg

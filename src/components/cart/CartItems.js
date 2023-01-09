@@ -27,7 +27,7 @@ const CartItems = ({ cartItems, cartCount ,total }) => {
           </div>
 
           {Object.values(cartItems).map((item) => {
-            return <CartItem item={item}></CartItem>;
+            return <CartItem item={item} key={item.id}></CartItem>;
           })}
 
           <Link to="/shop"
