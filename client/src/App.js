@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import Login from "./pages/Login";
 import Shop from "./pages/Shop";
+import Payment from "./pages/Payment";
 import Checkout from "./pages/Checkout";
 function App() {
 return (
@@ -18,6 +19,7 @@ return (
           <Route path="/shop" element={<Shop />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/checkout" element={<Checkout />}></Route>
+          <Route path="/payment" element={<Payment />}></Route>
         </Route>
         <Route path="*" element={<NoPage />}></Route>
 

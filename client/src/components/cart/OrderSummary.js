@@ -1,4 +1,5 @@
-import Payment from "../payment/Payment";
+import { Link } from "react-router-dom";
+import Payment from "../../pages/Payment";
 const OrderSummary = ({cartCount, total}) => {
   return (
     <>
@@ -38,10 +39,13 @@ const OrderSummary = ({cartCount, total}) => {
           <span>Total cost</span>
           <span>${total}</span>
         </div>
-        {/* <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
-          Checkout
-        </button> */}
-       <Payment/>
+        <Link to="/payment">
+        <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
+          Pay
+        </button>
+        </Link>
+     
+  
       </div>
       
     </div>
