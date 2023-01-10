@@ -2,7 +2,7 @@ import { PaymentElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 
-export default function PaymentForm() {
+export default function PaymentForm({total}) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -47,7 +47,7 @@ export default function PaymentForm() {
           id="submit"
         >
           <span id="button-text">
-            {isProcessing ? "Processing ... " : "Pay now"}
+            {isProcessing ? "Processing ... " : "Pay now  $" + total   }
           </span>
         </button>
       </div>

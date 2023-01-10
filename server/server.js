@@ -1,5 +1,10 @@
 const express = require("express");
+var bodyParser = require("body-parser");
+
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const { resolve } = require("path");
 // Replace if using a different env file or config
 const env = require("dotenv").config({ path: "./.env" });
@@ -8,7 +13,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2022-08-01",
 });
 
-app.use(express.static(process.env.STATIC_DIR));
+// app.use(express.static(process.env.STATIC_DIR));
 
 app.get("/", (req, res) => {
   const path = resolve(process.env.STATIC_DIR + "/index.html");
@@ -22,10 +27,13 @@ app.get("/config", (req, res) => {
 });
 
 app.post("/create-payment-intent", async (req, res) => {
+  //retrieve by req.body
+  console.log("req.body: ", req.body);
+
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      currency: "AUD",
-      amount: 1999, //example
+      currency: "aud",
+      amount: req.body.total * 100, //from dollars to cents
       automatic_payment_methods: { enabled: true },
     });
 
