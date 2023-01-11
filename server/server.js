@@ -48,7 +48,19 @@ app.post("/create-payment-intent", async (req, res) => {
     });
   }
 });
+app.post('/contact', (req, res) => {
+  // console.log("contact: ", req.body);
+  const { name, email, message } = req.body;
+  //validation
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
 
+  // process the data and send email
+
+  // send response
+  return res.json({ message: 'success' });
+});
 app.listen(5252, () =>
   console.log(`Node server listening at http://localhost:5252`)
 );
