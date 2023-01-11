@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Shop from "./pages/Shop";
 import Payment from "./pages/Payment";
 import Checkout from "./pages/Checkout";
+import OrderCompleted from "./pages/OrderCompleted";
 function App() {
 return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ return (
           <Route path="/login" element={<Login />}></Route>
           <Route path="/checkout" element={<Checkout />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
+          <Route path="/completion" element={<OrderCompleted />}></Route>
         </Route>
         <Route path="*" element={<NoPage />}></Route>
 

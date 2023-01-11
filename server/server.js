@@ -3,7 +3,6 @@ var bodyParser = require("body-parser");
 
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 const { resolve } = require("path");
 // Replace if using a different env file or config

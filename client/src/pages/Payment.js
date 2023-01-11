@@ -47,6 +47,8 @@ function Payment() {
               }}
             >
               <PaymentForm  total={total}/>
+
+              <p className="text-gray-600 text-sm">Stripe Test Card: 4242424242424242</p>
             </Elements>
           )}
         </div>
