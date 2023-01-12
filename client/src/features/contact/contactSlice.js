@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
 
 
 export const contactSlice = createSlice({
@@ -40,14 +41,10 @@ export const contactSlice = createSlice({
 export const { setStatus, setMessage, setLoading } = contactSlice.actions;
 
 export const submitContactUsForm = (data) => async (dispatch) => {
-    // console.log('submitContactUsForm', data)
+     console.log('submitContactUsForm', data)
     try {
-      const response = await fetch('/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      const jsonResponse = await response.json();
+      const response = await axios.post('/contact',data);
+      const jsonResponse =  response.data;
       dispatch(setMessage(jsonResponse));
       if (!response.ok) {
         throw new Error(jsonResponse.message);

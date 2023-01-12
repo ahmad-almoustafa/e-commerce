@@ -16,7 +16,7 @@ const CartIcon = () => {
   //dispatch actions to the Redux reducers
   const dispatch = useDispatch();
 
-  console.log("isCartOpen1==", isCartOpen);
+  // console.log("isCartOpen1==", isCartOpen);
   
   return (
     <>

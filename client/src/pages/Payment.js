@@ -5,30 +5,25 @@ import PaymentForm from "../components/payment/PaymentForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 import { selectTotal } from "../features/cart/selector";
-
+import axios from "axios";
 function Payment() {
   const total = useSelector(selectTotal);
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("/config").then(async (r) => {
-      const { publishableKey } = await r.json();
+    axios.get("/config").then( (r) => {
+      const { publishableKey } = r.data;
       setStripePromise(loadStripe(publishableKey));
     });
   }, []);
   //pass the amount to the server
   useEffect(() => {
-    fetch(`/create-payment-intent`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({
-        total,
-      }),
-    }).then(async (result) => {
-      var { clientSecret } = await result.json();
+    axios.post(
+      `/create-payment-intent`, 
+      {total}//Axios automatically serializes JavaScript objects into JSON,
+    ).then( (result) => {
+      var { clientSecret } =  result.data;
       setClientSecret(clientSecret);
     });
   }, []);
