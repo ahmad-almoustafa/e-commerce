@@ -3,19 +3,37 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import ProductList from "./ProductList";
 import { selectProduct } from "../../features/product/selector";
-import { fetchAsyncProducts } from "../../features/product/productSlice";
+import {
+  fetchAsyncProducts,
+  setCurrentPage,
+} from "../../features/product/productSlice";
+import Pagination from "./Pagination";
 import { CircleLoader } from "react-spinners";
 
 const Products = () => {
   //fetch products from api using thunk
   const dispatch = useDispatch();
-  //product obj {loading, products, error}
+  //product obj {loading, products, error,currentPage,productsPerPage }
   const product = useSelector(selectProduct);
+  const { currentPage, productsPerPage } = product;
+
   //const product= useSelector((state)=>state.product);
 
   useEffect(() => {
     dispatch(fetchAsyncProducts());
-  }, []);
+  }, [dispatch]);
+  
+  // Get current products for pagination
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = product.products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  const handlePageChange = (pageNumber) => {
+    dispatch(setCurrentPage(pageNumber));
+  };
 
   return (
     <>
@@ -34,12 +52,17 @@ const Products = () => {
             <div>Error: {product.error}</div>
           ) : null}
           {!product.loading && product.products.length ? (
-            <ProductList products={product.products}></ProductList>
+            <ProductList products={currentProducts}></ProductList>
           ) : null}
-          <div>
-          </div>
+          <div></div>
         </div>
       </div>
+      <Pagination
+        productsPerPage={productsPerPage}
+        totalProducts={product.products.length}
+        currentPage={currentPage}
+        handlePageChange={handlePageChange}
+      />
     </>
   );
 };

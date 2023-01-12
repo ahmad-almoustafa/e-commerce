@@ -12,7 +12,7 @@ export const fetchAsyncProducts=createAsyncThunk(
     //2nd param => callback function 
     async (thunkAPI) => {
         // console.log('fetchAsyncProducts thunkAPI')
-        const res = await fetch('https://dummyjson.com/products?limit=12')
+        const res = await fetch('https://dummyjson.com/products')
         .then((res) => res.json())
         .then((productsObj) => productsObj.products);
         return res
@@ -22,12 +22,24 @@ export const fetchAsyncProducts=createAsyncThunk(
 const initialState={
     loading:false,
     products:[],
+    currentPage:1,
+    productsPerPage:8,//default
     error:'',
 }
 const productSlice =createSlice({
     name:'products',
     initialState,
-    reducers:{},
+    reducers:{
+        //use arrow functions
+        setCurrentPage:(state,action)=>{
+            state.currentPage=action.payload;
+        },
+
+        setProductPerPage:(state,action)=>{
+            state.productsPerPage=action.payload;  
+        }
+    },
+
     extraReducers: (builder) => {
         builder.addCase(fetchAsyncProducts.pending,(state,action)=>{
             state.loading=true;
@@ -49,3 +61,4 @@ const productSlice =createSlice({
 })
 
 export default productSlice.reducer;
+export const {setCurrentPage,setProductPerPage} = productSlice.actions
