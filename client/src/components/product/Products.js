@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import ProductList from "./ProductList";
 import { selectProduct } from "../../features/product/selector";
 import {
-  fetchAsyncProducts,
+  fetchProducts,
   setCurrentPage,
 } from "../../features/product/productSlice";
 import Pagination from "./Pagination";
@@ -20,7 +20,7 @@ const Products = () => {
   //const product= useSelector((state)=>state.product);
 
   useEffect(() => {
-    dispatch(fetchAsyncProducts());
+    dispatch(fetchProducts());
   }, [dispatch]);
   
   // Get current products for pagination

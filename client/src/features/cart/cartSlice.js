@@ -17,7 +17,7 @@ const cartSlice = createSlice({
   reducers: {
    
     /**
-     * map with 'cart/addItem'
+     * map with 'addItem' action => i.e: dispatch(addItem(product))
      * with slice reducer => you can directly mutate the state =>createSlice use 'immer' library under the hood
      */
     addItem(state, action) {
