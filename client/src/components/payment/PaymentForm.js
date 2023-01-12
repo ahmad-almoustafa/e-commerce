@@ -40,7 +40,7 @@ export default function PaymentForm({total}) {
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
-      <div class="flex items-center justify-center ">
+      <div className="flex items-center justify-center ">
         <button
           className="bg-indigo-500 font-semibold rounded hover:bg-indigo-600  py-3 my-4 text-sm text-white uppercase w-1/3"
           disabled={isProcessing || !stripe || !elements}

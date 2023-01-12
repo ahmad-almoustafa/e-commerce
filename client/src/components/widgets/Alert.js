@@ -17,7 +17,7 @@ const Alert = ({ color, title, message }) => {
             {title}
           </h4>
           <hr className={"opacity-30 border-" + color + "-600"} />
-          <p class="my-4">{message}</p>
+          <p className="my-4">{message}</p>
           <button
             className="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
             onClick={() => setVisible(false)}
