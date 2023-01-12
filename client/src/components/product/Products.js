@@ -9,6 +9,7 @@ import {
 } from "../../features/product/productSlice";
 import Pagination from "./Pagination";
 import { CircleLoader } from "react-spinners";
+import Search from "./Search"
 
 const Products = () => {
   //fetch products from api using thunk
@@ -35,10 +36,17 @@ const Products = () => {
     dispatch(setCurrentPage(pageNumber));
   };
 
+
+  const handleSearch = e => {
+     e.preventDefault();
+    dispatch(fetchProducts(e.target.value));
+  }
+  
   return (
     <>
       <div className="bg-white">
         <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+          <Search handleSearch={handleSearch}/>
           {product.loading && (
             <div className="w-full flex justify-center items-center h-96	">
               <CircleLoader

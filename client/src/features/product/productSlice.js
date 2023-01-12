@@ -15,16 +15,23 @@ export const fetchProducts = createAsyncThunk(
   //1st param => action type string prefix
   "products/fetch",
   //2nd param => callback function
-  async () => {
+  async (query) => {
     try{
-        const response = await axios.get("https://dummyjson.com/products");
-        // console.log('response:',response?.data.products)
+      let response;
+      if (typeof query !== "undefined") {
+        response = await axios.get(`https://dummyjson.com/products/search?q=${query}`);      
+      }else{
+        response = await axios.get(`https://dummyjson.com/products`);  
+      }
+      // console.log('response:',response?.data.products)
         return response?.data.products;
     } catch(error){
         throw error
     }
   }
 );
+
+
 
 const initialState = {
   loading: false,
@@ -37,7 +44,9 @@ const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    //standard reducer logic, with auto-generated action types per reducer
     //use arrow functions
+    // when 'setCurrentPage' action type is dispatched => run this func 
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
@@ -67,6 +76,7 @@ const productSlice = createSlice({
       state.products = [];
       state.error = action.error.message;
     });
+
   },
 });
 
