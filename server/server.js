@@ -19,13 +19,14 @@ app.get("/", (req, res) => {
   res.sendFile(path);
 });
 
-app.get("/config", (req, res) => {
+app.get("/api/config", (req, res) => {
+  console.log("config: ", req.body);
   res.send({
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
   });
 });
 
-app.post("/create-payment-intent", async (req, res) => {
+app.post("/api/create-payment-intent", async (req, res) => {
   //retrieve by req.body
   console.log("req.body: ", req.body);
 
@@ -48,8 +49,8 @@ app.post("/create-payment-intent", async (req, res) => {
     });
   }
 });
-app.post('/contact', (req, res) => {
-  // console.log("contact: ", req.body);
+app.post('/api/contact', (req, res) => {
+  console.log("contact: ", req.body);
   const { name, email, message } = req.body;
   //validation
   if (!name || !email || !message) {

@@ -12,7 +12,7 @@ function Payment() {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    axios.get("/config").then( (r) => {
+    axios.get("/api/config").then( (r) => {
       const { publishableKey } = r.data;
       setStripePromise(loadStripe(publishableKey));
     });
@@ -20,7 +20,7 @@ function Payment() {
   //pass the amount to the server
   useEffect(() => {
     axios.post(
-      `/create-payment-intent`, 
+      `/api/create-payment-intent`, 
       {total}//Axios automatically serializes JavaScript objects into JSON,
     ).then( (result) => {
       var { clientSecret } =  result.data;
