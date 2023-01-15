@@ -10,7 +10,8 @@ function Payment() {
   const total = useSelector(selectTotal);
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
-
+  //for prod.. as proxy only working for dev
+  axios.defaults.port = 5252;
   useEffect(() => {
     axios.get("/api/config").then( (r) => {
       const { publishableKey } = r.data;
