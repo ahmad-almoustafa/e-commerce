@@ -14,18 +14,18 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
 
 // app.use(express.static(process.env.STATIC_DIR));
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   const path = resolve(process.env.STATIC_DIR + "/index.html");
   res.sendFile(path);
 });
 
-app.get("/config", (req, res) => {
+app.get("/api/config", (req, res) => {
   res.send({
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
   });
 });
 
-app.post("/create-payment-intent", async (req, res) => {
+app.post("/api/create-payment-intent", async (req, res) => {
   //retrieve by req.body
   console.log("req.body: ", req.body);
 
@@ -48,7 +48,7 @@ app.post("/create-payment-intent", async (req, res) => {
     });
   }
 });
-app.post('/contact', (req, res) => {
+app.post('/api/contact', (req, res) => {
   // console.log("contact: ", req.body);
   const { name, email, message } = req.body;
   //validation

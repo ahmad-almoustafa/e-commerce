@@ -43,7 +43,7 @@ export const { setStatus, setMessage, setLoading } = contactSlice.actions;
 export const submitContactUsForm = (data) => async (dispatch) => {
      console.log('submitContactUsForm', data)
     try {
-      const response = await axios.post('/contact',data);
+      const response = await axios.post('/api/contact',data);
       const jsonResponse =  response.data;
       dispatch(setMessage(jsonResponse));
       if (!response.ok) {
