@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import CartItems from "./../components/cart/CartItems";
 import OrderSummary from "./../components/cart/OrderSummary";
 import { selectCartItems, selectTotal,selectCartCount } from "../features/cart/selector";
+import { withSEO } from "../components/Seo/withSEO";
 
-const Shop = () => {
+const Checkout = () => {
   //use Selector to get data from Redux state store
   const cartItems = useSelector(selectCartItems);
   const total = useSelector(selectTotal);
@@ -20,4 +21,5 @@ const Shop = () => {
     </>
   );
 };
-export default Shop;
+
+export default withSEO(Checkout,{title : 'Checkout'});

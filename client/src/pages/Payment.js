@@ -6,6 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 import { selectTotal } from "../features/cart/selector";
 import axios from "axios";
+import { withSEO } from "../components/Seo/withSEO";
 function Payment() {
   const total = useSelector(selectTotal);
   const [stripePromise, setStripePromise] = useState(null);
@@ -52,4 +53,4 @@ function Payment() {
   );
 }
 
-export default Payment;
+export default withSEO (Payment, {title:'Payment'});

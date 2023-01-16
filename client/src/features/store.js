@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import productReducer from "./product/productSlice";
 import cartReducer from "./cart/cartSlice";
+import seoSlice from "./seo/seoSlice"
 import { combineReducers } from "redux";
 
 /**
@@ -16,7 +17,8 @@ import { combineReducers } from "redux";
 
 const rootReducer= combineReducers({
     product:productReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    seo: seoSlice.reducer,
 })
 
 export const store=configureStore({

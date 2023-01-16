@@ -1,4 +1,5 @@
 import Products from "../components/product/Products";
+import { withSEO } from "../components/Seo/withSEO";
 const Shop = () => {
   return (
     <>
@@ -8,5 +9,6 @@ const Shop = () => {
   ); 
     
   };
-  export default Shop;
+  
+  export default withSEO(Shop);
   

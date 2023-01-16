@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { withSEO } from "../components/Seo/withSEO";
 import Alert from "../components/widgets/Alert";
 const OrderCompleted = () => {
   const message="Your order has completed successfully. You'll receive an order confirmation shortly.";
@@ -25,4 +26,4 @@ const OrderCompleted = () => {
     );
 };
 
-export default OrderCompleted;
+export default withSEO(OrderCompleted, {title:'Success'});

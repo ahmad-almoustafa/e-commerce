@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import { useDispatch } from "react-redux";
+import { withSEO } from "../components/Seo/withSEO";
 import { submitContactUsForm } from "../features/contact/contactSlice";
+
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -109,4 +111,10 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+const seo = {
+  title: "Contact us",
+  description:"Contact us description",
+  keywords:"Contact us keywords",
+};
+
+export default withSEO(Contact,seo);
