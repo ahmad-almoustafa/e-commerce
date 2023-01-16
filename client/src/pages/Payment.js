@@ -26,7 +26,7 @@ function Payment() {
       var { clientSecret } =  result.data;
       setClientSecret(clientSecret);
     });
-  }, []);
+  }, [total]);
 
   return (
     <>

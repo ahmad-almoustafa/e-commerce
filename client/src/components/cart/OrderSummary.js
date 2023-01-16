@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Payment from "../../pages/Payment";
 const OrderSummary = ({cartCount, total}) => {
   return (
     <>
