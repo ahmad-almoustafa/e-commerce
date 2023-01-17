@@ -14,7 +14,7 @@ import CartIcon from "../cart/CartIcon";
               {/* Nav Links */}
               <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                 <li>
-                  <Link className="hover:text-gray-200" to="/shop">
+                  <Link className="hover:text-gray-200" to="/">
                     Shop
                   </Link>
                 </li>

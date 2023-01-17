@@ -30,7 +30,7 @@ const CartItems = ({ cartItems, cartCount ,total }) => {
             return <CartItem item={item} key={item.id}></CartItem>;
           })}
 
-          <Link to="/shop"
+          <Link to="/"
             className="flex font-semibold text-indigo-600 text-sm mt-10"
           >
             <svg

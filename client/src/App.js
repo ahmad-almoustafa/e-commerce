@@ -15,9 +15,8 @@ return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout/>}>
-          {/* <Route index element={<Layout />}></Route> */}
+          <Route index element={<Shop />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/shop" element={<Shop />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/checkout" element={<Checkout />}></Route>
           <Route path="/payment" element={<Payment />}></Route>

@@ -10,7 +10,7 @@ const OrderCompleted = () => {
             <Alert color="green" title ="Order Completed" message={message}></Alert>
 
         
-         <Link to="/shop"
+         <Link to="/"
             className="flex font-semibold text-indigo-600 text-sm mt-10"
           >
             <svg
