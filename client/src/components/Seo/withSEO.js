@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import Helmet from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import seoSlice,  { setSeo } from "../../features/seo/seoSlice";
@@ -8,14 +8,19 @@ import {selectSeo} from "../../features/seo/selectors";
 export const withSEO = (WrappedComponent, CompSEO=seoSlice.getInitialState()) => {
   return (props) => {
     const dispatch = useDispatch();
-   
+    //wrap with useCallback hook to prevent unnecessary re-renders
+    //this function is now cached and won't get re created with each render
+    const setSeoCallback = useCallback(()=>{
+        //TODO: Fetch SEO data from the server
+        //For now pass it as props
+        dispatch(setSeo(CompSEO));
+    },[dispatch])
+
     useEffect(() => {
-      //TODO: Fetch SEO data from the server
-      //For now pass it as props
-      dispatch(setSeo(CompSEO));
-    }, []);
+       setSeoCallback()
+    }, [setSeoCallback]);
+
     const seo = useSelector(selectSeo);
-    console.log('seo',seo)
     return (   
       <>
         <Helmet>
