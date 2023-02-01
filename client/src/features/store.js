@@ -4,6 +4,7 @@ import cartReducer from "./cart/cartSlice";
 import seoSlice from "./seo/seoSlice"
 import { combineReducers } from "redux";
 import paymentSlice from './payment/paymentSlice';
+import shippingSlice from './shipping/shippingSlice';
 
 /**
  * Redux application
@@ -21,6 +22,7 @@ const rootReducer= combineReducers({
     cart: cartReducer,
     seo: seoSlice.reducer,
     payment:paymentSlice,
+    shipping:shippingSlice,
 })
 
 export const store=configureStore({

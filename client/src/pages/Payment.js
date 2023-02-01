@@ -4,7 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import PaymentForm from "../components/payment/PaymentForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTotal } from "../features/cart/selector";
+import { selectCartTotal, selectTotal } from "../features/cart/selector";
 import axios from "axios";
 import { withSEO } from "../components/Seo/withSEO";
 import { selectPaymentStripe } from "../features/payment/selectors";
