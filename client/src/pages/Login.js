@@ -1,7 +1,8 @@
 import { withSEO } from "../components/Seo/withSEO";
+import ComingSoon from "../components/widgets/ComingSoon";
 
 const Login = () => {
-    return <h1> Login Page</h1>;
+    return <ComingSoon/>
   };
   const seo = {
     title: "Login ",

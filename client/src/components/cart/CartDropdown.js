@@ -9,7 +9,7 @@ const CartDropdown = () => {
   const dispatch=useDispatch();
 
   return (
-    <div className="absolute mt-2 top-12 right-2  w-1/5 bg-white px-10 py-10">
+    <div className="absolute mt-2 top-12 right-2  w-1/5 bg-zinc-300 z-10 px-10 py-10">
       <div className=" w-full text-black ">
         {Object.values(cartItems).map((item) => {
           return <CartDropdownItem item={item} key={item.id}></CartDropdownItem>;

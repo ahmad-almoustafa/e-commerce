@@ -28,7 +28,7 @@ export const withSEO = (WrappedComponent, CompSEO=seoSlice.getInitialState()) =>
           <meta name="description" content={seo.description} />
           <meta name="keywords" content={seo.keywords} />
         </Helmet>
-        <WrappedComponent {...props} />;
+        <WrappedComponent {...props} />
       </>
     );
   };
